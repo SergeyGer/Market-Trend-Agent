@@ -366,6 +366,13 @@ python -m py_compile main.py analyzer.py distribute.py ingest.py config.py model
 python -c "import main, analyzer, distribute, ingest, storage; print('imports OK')"
 ```
 
+Run the test suite:
+
+```bash
+pip install pytest pytest-asyncio
+pytest -q
+```
+
 End-to-end verification:
 
 ```bash
@@ -392,8 +399,8 @@ Pipeline complete | analyzed=<n> failures=<m> notion=<n> telegram=<m>
 
 ## Roadmap
 
-- Add a `pytest` test suite covering ingestion, schema validation, analyzer retries, and distribution.
-- Add Docker support and a GitHub Actions workflow for scheduled runs.
+- Expand the `pytest` suite to cover analyzer retries and distribution error paths.
+- Add Docker support and a scheduled GitHub Actions workflow for daily runs.
 - Add support for more notification channels (Slack, Discord, email).
 - Add a web dashboard for browsing the aggregated intelligence.
 
