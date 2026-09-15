@@ -34,7 +34,7 @@
 
   <text x="130" y="576" fill="#64748B"
         font-family="Segoe UI, Arial, sans-serif"
-        font-size="20">github.com/&lt;USERNAME&gt;/&lt;REPO&gt;</text>
+        font-size="20">github.com/SergeyGer/Market-Trend-Agent</text>
 
   <circle cx="1130" cy="150" r="6" fill="#38BDF8" opacity="0.7"/>
   <circle cx="1190" cy="220" r="4" fill="#818CF8" opacity="0.7"/>

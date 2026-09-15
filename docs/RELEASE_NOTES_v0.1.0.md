@@ -55,8 +55,8 @@
 ## Getting Started
 
 ```bash
-git clone https://github.com/<USERNAME>/<REPO>.git
-cd <REPO>
+git clone https://github.com/SergeyGer/Market-Trend-Agent.git
+cd Market-Trend-Agent
 
 python -m venv .venv
 # Windows
