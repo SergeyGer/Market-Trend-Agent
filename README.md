@@ -29,6 +29,7 @@ An autonomous, AI-powered pipeline that continuously ingests market and technolo
 - [Verification](#verification)
 - [Utility Scripts](#utility-scripts)
 - [Roadmap](#roadmap)
+- [Contributing](#contributing)
 - [License](#license)
 
 ---
@@ -140,6 +141,13 @@ market-trend-agent/
 ├── create_notion_database.py   # Utility: create a ready-to-use Notion database
 ├── update_notion_database.py   # Utility: add missing properties to an existing DB
 ├── list_notion_pages.py        # Utility: list pages shared with the integration
+├── tests/                      # Pytest suite
+├── docs/                       # Release notes and documentation
+├── assets/                     # Social preview and static assets
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+├── LICENSE
+├── pyproject.toml
 ├── requirements.txt
 └── README.md
 ```
@@ -406,6 +414,12 @@ Pipeline complete | analyzed=<n> failures=<m> notion=<n> telegram=<m>
 
 ---
 
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+---
+
 ## License
 
-This project is licensed under the MIT License. Add a `LICENSE` file to match the badge above.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
