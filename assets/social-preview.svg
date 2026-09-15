@@ -1,0 +1,46 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#131F3A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <rect x="80" y="96" width="10" height="448" rx="5" fill="url(#accent)"/>
+
+  <text x="130" y="220" fill="#F8FAFC"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="66" font-weight="700">Market &amp; Trend</text>
+  <text x="130" y="300" fill="#F8FAFC"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="66" font-weight="700">Intelligence Agent</text>
+
+  <text x="130" y="372" fill="#94A3B8"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="28">RSS/JSON ingestion · Anthropic Claude · Notion · Telegram</text>
+
+  <text x="130" y="446" fill="#CBD5E1"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="24">Async Python · Pydantic v2 · SQLite · HTTPX · BeautifulSoup</text>
+  <text x="130" y="488" fill="#CBD5E1"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="24">Structured outputs via Claude tool calling</text>
+
+  <text x="130" y="576" fill="#64748B"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="20">github.com/&lt;USERNAME&gt;/&lt;REPO&gt;</text>
+
+  <circle cx="1130" cy="150" r="6" fill="#38BDF8" opacity="0.7"/>
+  <circle cx="1190" cy="220" r="4" fill="#818CF8" opacity="0.7"/>
+  <circle cx="1090" cy="250" r="3" fill="#38BDF8" opacity="0.5"/>
+  <circle cx="1210" cy="120" r="3" fill="#818CF8" opacity="0.5"/>
+  <line x1="1130" y1="150" x2="1190" y2="220" stroke="#1E293B" stroke-width="2"/>
+  <line x1="1130" y1="150" x2="1090" y2="250" stroke="#1E293B" stroke-width="2"/>
+  <line x1="1190" y1="220" x2="1210" y2="120" stroke="#1E293B" stroke-width="2"/>
+</svg>
