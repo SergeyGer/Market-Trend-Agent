@@ -2,6 +2,8 @@
 
 An autonomous, AI-powered pipeline that continuously ingests market and technology news, analyzes it with Anthropic Claude, and distills high-impact signals into a structured Notion knowledge base and Telegram alerts.
 
+[![CI](https://github.com/SergeyGer/Market-Trend-Agent/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SergeyGer/Market-Trend-Agent/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/SergeyGer/Market-Trend-Agent/ci.yml?branch=master&label=tests)](https://github.com/SergeyGer/Market-Trend-Agent/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![Anthropic](https://img.shields.io/badge/Anthropic-Claude-000000?logo=anthropic&logoColor=white)
 ![Notion](https://img.shields.io/badge/Notion-API-000000?logo=notion&logoColor=white)
@@ -166,8 +168,8 @@ market-trend-agent/
 ### Installation
 
 ```bash
-git clone https://github.com/<your-username>/market-trend-agent.git
-cd market-trend-agent
+git clone https://github.com/SergeyGer/Market-Trend-Agent.git
+cd Market-Trend-Agent
 
 python -m venv .venv
 
@@ -407,7 +409,7 @@ Pipeline complete | analyzed=<n> failures=<m> notion=<n> telegram=<m>
 
 ## Roadmap
 
-- Expand the `pytest` suite to cover analyzer retries and distribution error paths.
+- Add coverage reporting (Codecov) and broaden integration tests against mocked services.
 - Add Docker support and a scheduled GitHub Actions workflow for daily runs.
 - Add support for more notification channels (Slack, Discord, email).
 - Add a web dashboard for browsing the aggregated intelligence.
