@@ -240,6 +240,7 @@ class ArticleAnalyzer:
                 return await self._client.messages.create(
                     model=self.settings.anthropic_model,
                     max_tokens=1024,
+                    temperature=self.settings.anthropic_temperature,
                     system=system,
                     messages=messages,
                     tools=tools,
@@ -360,8 +361,3 @@ class ArticleAnalyzer:
             error_message=error_message,
             raw_response=raw_response,
         )
-
-
-def get_json_schema_hint() -> dict[str, object]:
-    """Return the JSON schema used for strict response validation."""
-    return ArticleAnalysis.model_json_schema()

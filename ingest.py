@@ -7,8 +7,9 @@ import json
 import logging
 import re
 import xml.etree.ElementTree as ET
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from typing import Any, Iterable
+from typing import Any
 
 import httpx
 from bs4 import BeautifulSoup, Comment, NavigableString, Tag
@@ -25,7 +26,7 @@ RSS_ITEM_TAGS: frozenset[str] = frozenset({"item", "entry"})
 RSS_TITLE_TAGS: frozenset[str] = frozenset({"title"})
 RSS_LINK_TAGS: frozenset[str] = frozenset({"link"})
 RSS_CONTENT_TAGS: frozenset[str] = frozenset(
-    {"description", "content", "summary", "content:encoded"}
+    {"description", "content", "summary", "encoded", "content:encoded"}
 )
 
 JSON_TITLE_KEYS: frozenset[str] = frozenset(
@@ -291,15 +292,26 @@ class IngestionManager:
     def _extract_rss_field(
         self, item_element: ET.Element, candidate_tags: frozenset[str]
     ) -> str:
+        candidates: list[str] = []
         for child in item_element:
             local_tag = self._local_name(child.tag)
-            if local_tag in candidate_tags and child.text:
-                return child.text.strip()
-            if local_tag in candidate_tags:
-                encoded = child.find("{*}encoded")
-                if encoded is not None and encoded.text:
-                    return encoded.text.strip()
-        return ""
+            if local_tag not in candidate_tags:
+                continue
+
+            text = (child.text or "").strip()
+            if not text:
+                # RSS 2.0 often nests the payload, e.g. <content:encoded>.
+                nested = child.find("{*}encoded")
+                if nested is not None and nested.text:
+                    text = nested.text.strip()
+            if text:
+                candidates.append(text)
+
+        if not candidates:
+            return ""
+
+        # Prefer the richest payload: full-text content:encoded over summaries.
+        return max(candidates, key=len)
 
     def _extract_rss_link(self, item_element: ET.Element) -> str:
         for child in item_element:

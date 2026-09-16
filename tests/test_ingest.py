@@ -55,3 +55,36 @@ def test_deduplicate_in_memory(settings) -> None:
     second = manager._deduplicate([article])
     assert len(first) == 1
     assert len(second) == 0
+
+
+def test_parse_rss_prefers_content_encoded(settings) -> None:
+    xml = (
+        '<?xml version="1.0"?>'
+        '<rss xmlns:content="http://purl.org/rss/1.0/modules/content/">'
+        "<channel><item>"
+        "<title>Full item</title>"
+        "<link>https://example.com/full</link>"
+        "<description>Short summary</description>"
+        "<content:encoded>"
+        "The full article body with substantially more detail than the summary."
+        "</content:encoded>"
+        "</item></channel></rss>"
+    )
+    manager = IngestionManager(settings=settings)
+    articles = manager._parse_rss(xml, "https://example.com/feed")
+    assert len(articles) == 1
+    assert "full article body" in articles[0].content
+
+
+def test_parse_rss_falls_back_to_description(settings) -> None:
+    xml = (
+        '<?xml version="1.0"?>'
+        "<rss><channel><item>"
+        "<title>Only summary</title>"
+        "<link>https://example.com/sum</link>"
+        "<description>Summary only content</description>"
+        "</item></channel></rss>"
+    )
+    manager = IngestionManager(settings=settings)
+    articles = manager._parse_rss(xml, "https://example.com/feed")
+    assert articles[0].content == "Summary only content"

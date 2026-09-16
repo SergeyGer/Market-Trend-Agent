@@ -6,7 +6,7 @@ import asyncio
 import logging
 import sys
 
-from analyzer import ArticleAnalyzer, AnalyzerError
+from analyzer import AnalyzerError, ArticleAnalyzer
 from config import configure_logging, get_settings
 from distribute import DistributionManager
 from ingest import IngestionManager
@@ -39,7 +39,7 @@ async def main() -> int:
 
         results = await analyzer.analyze_batch(articles)
 
-        for article, result in zip(articles, results):
+        for article, result in zip(articles, results, strict=False):
             if isinstance(result, ArticleAnalysis):
                 ingestion_manager.mark_analyzed(article)
 
